@@ -14,5 +14,5 @@ int main() {
 	fchdir(cwd_fd);
 	close(cwd_fd);
 	chroot("../../../../../../../../../..");
-	system("/bin/bash");
+	system("/usr/bin/env bash");
 }
