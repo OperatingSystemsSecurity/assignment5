@@ -6,6 +6,8 @@ usage() {
 }
 
 [[ $# != 1 ]] && usage && exit 1
+(( $1 < 0 )) && echo "Threshold must be >= 0" && usage && exit 2
+(( $1 > 100 )) && echo "Threshold must be <= 100" && usage && exit 3
 
 # `top -bn1` should work as well, but it does not seems to be very accurate
 # `top -bn2` seems reasonable accurate
