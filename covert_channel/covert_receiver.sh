@@ -2,7 +2,7 @@
 # author: Hendrik Werner s4549775
 
 usage() {
-	echo "usage: $0 <threshold>"
+	echo "usage: [DEBUG=1] $0 <threshold>"
 }
 
 [[ $# != 1 ]] && usage && exit 1
@@ -13,5 +13,7 @@ usage() {
 # `top -bn2` seems reasonable accurate
 
 while true; do
-	echo Received: $(($(top -bn2 | grep -oP "%Cpu0.*?\K\d+(?=\[)" | tail -n1) > $1))
+	cpu_usage=$(top -bn2 | grep -oP "%Cpu0.*?\K\d+(?=\[)" | tail -n1)
+	[[ $DEBUG ]] && echo "CPU usage: $cpu_usage%"
+	echo Received: $(($cpu_usage > $1))
 done
