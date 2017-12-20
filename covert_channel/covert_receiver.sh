@@ -13,5 +13,5 @@ usage() {
 # `top -bn2` seems reasonable accurate
 
 while true; do
-	echo Received: $(($(top -bn2 | grep -oP "%Cpu0.*\K\d+(?=\[)" | tail -n1) > $1))
+	echo Received: $(($(top -bn2 | grep -oP "%Cpu0.*?\K\d+(?=\[)" | tail -n1) > $1))
 done
