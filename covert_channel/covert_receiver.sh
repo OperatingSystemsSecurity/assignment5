@@ -6,7 +6,7 @@ usage() {
 }
 
 [[ $# != 1 ]] && usage && exit 1
-(( $1 < 0 )) && echo 'Threshold must be >= ' && usage && exit 2
+(( $1 < 0 )) && echo 'Threshold must be >= 0' && usage && exit 2
 
 while true; do
 	task_time=$((time ./cpu_intensive_task.sh) 2>&1 | grep -oP '^real\s+[\d.]+m\K[\d.]+s$')
